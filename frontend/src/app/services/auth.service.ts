@@ -14,7 +14,7 @@ const USER_KEY = "User";
 export class AuthService {
   private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable: Observable<User>;
-  #http = inject(HttpClient);
+  private http = inject(HttpClient);
   private toastrService = inject(ToastrService);
 
   constructor() { 
@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(userLogin: IUserLogin): Observable<User> {
-    return this.#http.post<User>(USER_LOGIN_URL, userLogin).pipe(
+    return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({ 
               next: user => {
                 this.setUserToLocalStorage(user);
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   register(userRegiser: IUserRegister): Observable<User>{
-    return this.#http.post<User>(USER_REGISTER_URL, userRegiser).pipe(
+    return this.http.post<User>(USER_REGISTER_URL, userRegiser).pipe(
       tap({
         next: (user) => {
           this.setUserToLocalStorage(user);
@@ -79,5 +79,9 @@ export class AuthService {
     }
 
     return new User();
+  }
+
+  public get currentUser():User {
+    return this.userSubject.value;
   }
 }

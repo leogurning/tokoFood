@@ -9,7 +9,7 @@ import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_TAGS_URL, FOODS_URL, FOOD_
   providedIn: 'root'
 })
 export class FoodService {
-  #http = inject(HttpClient);
+  private http = inject(HttpClient);
   private headerOptions;
 
   constructor() { 
@@ -22,7 +22,7 @@ export class FoodService {
 
   getAll(): Observable<Food[]> {
     //return sample_food;
-    return this.#http.get<Food[]>(FOODS_URL, <Object>this.headerOptions)
+    return this.http.get<Food[]>(FOODS_URL, <Object>this.headerOptions)
       .pipe(
         map((response) => {
           return response
@@ -48,7 +48,7 @@ export class FoodService {
       this.headerOptions.params = urlParams;
      */
     //return this.getAll().filter(food => food.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
-    return this.#http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm)
+    return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm)
       .pipe(
         map( response => { return response; }),
         catchError(err => { throw `Error in data service. Details: ${err.message} > ${JSON.stringify(err.error)}`; })
@@ -57,7 +57,7 @@ export class FoodService {
 
   getAllTags(): Observable<Tag[]> {
     //return sample_tags;
-    return this.#http.get<Tag[]>(FOODS_TAGS_URL)
+    return this.http.get<Tag[]>(FOODS_TAGS_URL)
     .pipe(
       map( response => { return response; }),
       catchError(err => { throw `Error in data service. Details: ${err.message} > ${JSON.stringify(err.error)}`; })
@@ -67,7 +67,7 @@ export class FoodService {
   getAllFoodsByTag(tag: string): Observable<Food[]> {
     return tag === "All" ?
       this.getAll() :
-      this.#http.get<Food[]>(FOODS_BY_TAG_URL + tag)
+      this.http.get<Food[]>(FOODS_BY_TAG_URL + tag)
       .pipe(
         map( response => { return response; }),
         catchError(err => { throw `Error in data service. Details: ${err.message} > ${JSON.stringify(err.error)}`; })
@@ -77,7 +77,7 @@ export class FoodService {
 
   getFoodById(foodId:string): Observable<Food> {
     //return this.getAll().find(food => food.id == foodId) ?? new Food();
-    return this.#http.get<Food>(FOOD_BY_ID_URL + foodId)
+    return this.http.get<Food>(FOOD_BY_ID_URL + foodId)
     .pipe(
       map( response => { return response; }),
       catchError(err => { throw `Error in data service. Details: ${err.message} > ${JSON.stringify(err.error)}`; })

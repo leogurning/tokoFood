@@ -66,6 +66,12 @@ export class CartService {
   }
 
   /**
+   * getCart is to return last value of cartSubject observable
+   */
+  getCart(): Cart {
+    return this.cartSubject.value;
+  }
+  /**
    * setCartToLocalStorage to save the cart in the local storage
    * in order to avoid loosing data cart when refreshing the page
    */
