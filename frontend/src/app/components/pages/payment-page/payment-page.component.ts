@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TitleComponent } from '../../partials/title/title.component';
 import { OrderItemsListComponent } from '../../partials/order-items-list/order-items-list.component';
 import { MapComponent } from '../../partials/map/map.component';
+import { PaypalButtonComponent } from '../../partials/paypal-button/paypal-button.component';
 
 @Component({
   selector: 'app-payment-page',
@@ -12,7 +13,8 @@ import { MapComponent } from '../../partials/map/map.component';
   imports: [
     TitleComponent,
     OrderItemsListComponent,
-    MapComponent
+    MapComponent,
+    PaypalButtonComponent
   ],
   templateUrl: './payment-page.component.html',
   styleUrl: './payment-page.component.css'

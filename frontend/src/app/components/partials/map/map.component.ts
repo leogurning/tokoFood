@@ -42,13 +42,14 @@ export class MapComponent implements OnChanges {
      * Otherwise, there will be error in SSR 'window not defined'
      * afterNextRender must be placed in the constructor
      */
-     
+    /** No need to use afterNextRender currently. The ssr has been disabled
+     * in the angular.json  
     afterNextRender(()=> {
       import('leaflet').then((L) => {
         this.initializeMap(L);
       });
     },{phase: AfterRenderPhase.Read});
-
+    */
   }
   
   ngOnChanges(): void {
