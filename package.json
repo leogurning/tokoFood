@@ -1,5 +1,5 @@
 {
-    "name": "foodmine-course",
+    "name": "tokofood",
     "version": "1.0.0",
     "scripts": {
         "start": "cd backend/built && node server.js",
