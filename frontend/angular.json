@@ -36,11 +36,10 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/frontend",
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -54,10 +53,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": false,
-            "ssr": false
+            "scripts": []
           },
           "configurations": {
             "production": {
