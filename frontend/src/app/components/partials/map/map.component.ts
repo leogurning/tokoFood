@@ -1,6 +1,6 @@
 import { AfterRenderPhase, Component, ElementRef, OnChanges, ViewChild, afterNextRender, PLATFORM_ID, inject, Input } from '@angular/core';
 import { LocationService } from '../../../services/location.service';
-import { LatLng, LatLngExpression, Marker, marker, icon, LeafletMouseEvent } from 'leaflet';
+import { map, tileLayer, LatLng, LatLngExpression, Marker, marker, icon, LeafletMouseEvent } from 'leaflet';
 import { Order } from '../../../shared/models/Order';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -57,15 +57,37 @@ export class MapComponent implements OnChanges {
 
     /** This is the other way to check the browser platform, beside the afterNextRender */
     if (isPlatformBrowser(this.platformId)) {
+      /** 
       import('leaflet').then((L) => {
         this.initializeMap(L);
 
         if (this.readonly && this.addressLatLng) {
           this.showLocationOnReadonlyMode();
         }
-      });   
+      }); 
+      */ 
+      this.initializeMap();
+
+      if (this.readonly && this.addressLatLng) {
+        this.showLocationOnReadonlyMode();
+      } 
     } 
         
+  }
+  private initializeMap() {
+    if(this.map) return;
+
+    this.map = map(this.mapRef.nativeElement, {
+      attributionControl: false
+    }).setView(this.DEFAULT_LATLNG, 1);
+
+    tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
+
+    
+    this.map.on('click', (e:LeafletMouseEvent) => {
+      this.setMarker(e.latlng);
+    })
+
   }
 
   showLocationOnReadonlyMode() {
@@ -82,22 +104,6 @@ export class MapComponent implements OnChanges {
     m.off('click');
     m.tap?.disable();
     this.currentMarker.dragging?.disable();
-  }
-
-  private initializeMap(L: any) {
-    if(this.map) return;
-
-    this.map = L.map(this.mapRef.nativeElement, {
-      attributionControl: false
-    }).setView(this.DEFAULT_LATLNG, 1);
-
-    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
-
-    
-    this.map.on('click', (e:LeafletMouseEvent) => {
-      this.setMarker(e.latlng);
-    })
-
   }
 
   findMyLocation() {
