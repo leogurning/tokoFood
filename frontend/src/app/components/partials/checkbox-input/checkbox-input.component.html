@@ -1,0 +1,7 @@
+<input-container [label]="label">
+<input type="checkbox" [name]="config.name" [value]="config.value" [formControl]="formControl"/>{{ config.label }}
+<input-validation
+    [control]="control"
+    [showErrorsWhen]="showErrorsWhen">
+</input-validation>
+</input-container>

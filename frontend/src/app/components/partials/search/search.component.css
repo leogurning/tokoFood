@@ -34,3 +34,8 @@ div{
     opacity: 1;
     cursor: pointer;
   }
+
+  div button.entry {
+    border-radius: 10rem 10rem 10rem 10rem;
+    margin-right: 1.5rem;
+  }

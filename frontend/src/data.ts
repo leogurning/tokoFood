@@ -1,5 +1,7 @@
 import { Food } from "./app/shared/models/Food";
 import { Tag } from './app/shared/models/Tag';
+import { SelectConfig } from './app/shared/models/SelectConfig';
+import { RadioConfig } from "./app/shared/models/RadioConfig";
 
 export const sample_food: Food[] = [
     {
@@ -12,6 +14,7 @@ export const sample_food: Food[] = [
         stars: 4.5,
         imageUrl: 'assets/food-1.jpeg',
         tags: ['FastFood', 'Pizza', 'Lunch'],
+        status: 1
       },
       {
         id:'2',
@@ -23,6 +26,7 @@ export const sample_food: Food[] = [
         stars: 4.7,
         imageUrl: 'assets/food-2.jpeg',
         tags: ['SlowFood', 'Lunch'],
+        status: 1
       },
       {
         id:'3',
@@ -34,6 +38,7 @@ export const sample_food: Food[] = [
         stars: 3.5,
         imageUrl: 'assets/food-3.jpeg',
         tags: ['FastFood', 'Hamburger'],
+        status: 1
       },
       {
         id:'4',
@@ -45,6 +50,7 @@ export const sample_food: Food[] = [
         stars: 3.3,
         imageUrl: 'assets/food-4.jpeg',
         tags: ['FastFood', 'Fry'],
+        status: 1
       },
       {
         id:'5',
@@ -56,6 +62,7 @@ export const sample_food: Food[] = [
         stars: 3.0,
         imageUrl: 'assets/food-5.jpeg',
         tags: ['SlowFood', 'Soup'],
+        status: 1
       },
       {
         id:'6',
@@ -67,8 +74,9 @@ export const sample_food: Food[] = [
         stars: 4.0,
         imageUrl: 'assets/food-6.jpeg',
         tags: ['FastFood', 'Pizza', 'Lunch'],
+        status: 1
       },
-]
+];
 
 export const sample_tags:Tag[] = [
   { name: 'All', count: 6 },
@@ -79,4 +87,14 @@ export const sample_tags:Tag[] = [
   { name: 'Hamburger', count: 1 },
   { name: 'Fry', count: 1 },
   { name: 'Soup', count: 1 },
-]
+];
+
+export const statuses: SelectConfig[] = [
+  { id: 1, name: 'Active' },
+  { id: 2, name: 'Inactive' },
+];
+
+export const radioFavorites: RadioConfig[] = [
+  { name: 'favorite', value: 'true', label: 'Favorite' },
+  { name: 'favorite', value: 'false', label: 'Not Favorite' },
+];

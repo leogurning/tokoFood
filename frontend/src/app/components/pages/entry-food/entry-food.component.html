@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="details">
+      <app-title title="Food Data"></app-title>
+      <form [formGroup]="entryFoodForm" (ngSubmit)="submit()">
+        <text-input
+        [control]="fc['name']"
+        [showErrorsWhen]="isSubmitted"
+        label="Name">
+        `</text-input>
+  
+        <text-input
+        [control]="fc['cookTime']"
+        [showErrorsWhen]="isSubmitted"
+        label="Cook Time">
+        `</text-input>
+
+        <text-input
+        [control]="fc['price']"
+        [showErrorsWhen]="isSubmitted"
+        label="Price"
+        [directive]="true">
+        `</text-input>
+        
+        <text-input
+        [control]="fc['stars']"
+        [showErrorsWhen]="isSubmitted"
+        label="Stars"
+        [directive]="true">
+        `</text-input>
+        
+        <!--
+        <radio-input
+        [control]="fc['favorite']"
+        [showErrorsWhen]="isSubmitted"
+        label="Favorite"
+        [configs]="radioFavorites">
+        `</radio-input>
+        -->
+        
+        <checkbox-input
+        [control]="fc['favorite']"
+        [showErrorsWhen]="isSubmitted"
+        label="Favorite"
+        [config]="radioFavorite">
+        `</checkbox-input>
+        <!-- 
+          <div>
+            <label>Favorite</label>
+          </div>
+          <div>
+            <input type="radio" name="favorite" value="true" formControlName="favorite">Favorite
+            <input type="radio" name="favorite" value="false" formControlName="favorite">Not Favorite
+          </div>
+        -->
+
+        <div>
+          <label>Origins</label>
+        </div>
+        <div>
+          <tag-input [placeholder]="'Enter origins'" formControlName="origins" theme='bootstrap'>
+          <tag-input-dropdown
+            [autocompleteItems]="cbOrigins"
+            [showDropdownIfEmpty]="true"
+            [dynamicUpdate]="true">
+          </tag-input-dropdown>
+          </tag-input>
+        </div>
+        <!--
+          <div>
+            <label>Origins</label>
+          </div>
+          <div>
+            <input type="checkbox" name="ori-italy" value="italy" formControlName="origins">Italy
+            <input type="checkbox" name="ori-me" value="middle east" formControlName="origins">Middle East
+            <input type="checkbox" name="ori-persia" value="persia" formControlName="origins">Persia
+            <input type="checkbox" name="ori-china" value="china" formControlName="origins">China
+            <input type="checkbox" name="ori-germany" value="germany" formControlName="origins">Germany
+            <input type="checkbox" name="ori-us" value="us" formControlName="origins">USA
+            <input type="checkbox" name="ori-belgium" value="belgium" formControlName="origins">Belgium
+            <input type="checkbox" name="ori-france" value="france" formControlName="origins">France
+            <input type="checkbox" name="ori-india" value="india" formControlName="origins">India
+            <input type="checkbox" name="ori-asia" value="asia" formControlName="origins">Asia
+          </div>
+        -->
+        <div>
+          <label>Tags</label>
+        </div>
+        <div>
+          <tag-input [placeholder]="'Enter tag'" formControlName="tags" theme='bootstrap'>
+          <tag-input-dropdown
+            [autocompleteItems]="tagItems"
+            [showDropdownIfEmpty]="true"
+            [dynamicUpdate]="true">
+          </tag-input-dropdown>
+          </tag-input>
+        </div>
+        <!--
+        <div>
+          <input type="checkbox" name="tag-fastfood" value="FastFood" formControlName="tags">Fast Food
+          <input type="checkbox" name="tag-pizza" value="Pizza" formControlName="tags">Pizza
+          <input type="checkbox" name="tag-lunch" value="Lunch" formControlName="tags">Lunch
+          <input type="checkbox" name="tag-slowfood" value="SlowFood" formControlName="tags">Slow Food
+          <input type="checkbox" name="tag-hamburger" value="Hamburger" formControlName="tags">Hamburger
+          <input type="checkbox" name="tag-fry" value="Fry" formControlName="tags">Fry
+          <input type="checkbox" name="tag-soup" value="Soup" formControlName="tags">Soup
+        </div>
+        -->
+        <select-input
+        [control]="fc['status']"
+        [showErrorsWhen]="isSubmitted"
+        label="Status"
+        name="status"
+        id="idstatus"
+        [configs]="statuses">
+        `</select-input>
+
+        <!--
+        <div><label for="idstatus">Status</label></div>
+        <div>
+          <select name="status" id="idstatus" formControlName="status">
+            @for (status of statuses; track status) {
+              <option [ngValue]="status">{{ status.name }}</option>
+            }
+          </select>
+        </div>
+        -->
+        <text-input
+        [control]="fc['imageUrl']"
+        [showErrorsWhen]="isSubmitted"
+        label="Image">
+        `</text-input>
+
+        <default-button text="Add/Edit"></default-button>
+      </form>
+    </div>
+</div>

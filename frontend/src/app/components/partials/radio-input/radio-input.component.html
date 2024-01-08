@@ -1,0 +1,9 @@
+<input-container [label]="label">
+@for(config of configs; track config) {
+    <input type="radio" [name]="config.name" [value]="config.value" [formControl]="formControl"/>{{ config.label }}
+}
+<input-validation
+    [control]="control"
+    [showErrorsWhen]="showErrorsWhen">
+</input-validation>
+</input-container>

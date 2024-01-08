@@ -2,21 +2,20 @@ import { Component, Input } from '@angular/core';
 import { AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputContainerComponent } from '../input-container/input-container.component';
 import { InputValidationComponent } from '../input-validation/input-validation.component';
-import { FormatNumbersDirective } from '../../../directives/format-numbers.directive';
+import { CheckboxConfig } from '../../../shared/models/CheckboxConfig';
 
 @Component({
-  selector: 'text-input',
+  selector: 'checkbox-input',
   standalone: true,
   imports: [
     ReactiveFormsModule, //must import ReactiveFormsModule for formControl atribute in the <input>
     InputContainerComponent,
-    InputValidationComponent,
-    FormatNumbersDirective
+    InputValidationComponent
   ],
-  templateUrl: './text-input.component.html',
-  styleUrl: './text-input.component.css'
+  templateUrl: './checkbox-input.component.html',
+  styleUrl: './checkbox-input.component.css'
 })
-export class TextInputComponent {
+export class CheckboxInputComponent {
   @Input()
   control!:AbstractControl;
   @Input()
@@ -24,11 +23,10 @@ export class TextInputComponent {
   @Input()
   label!: string;
   @Input()
-  directive: boolean = false;
-  @Input()
-  type: 'text' | 'password' | 'email' = 'text';
+  config!: CheckboxConfig;
 
   get formControl() {
     return this.control as FormControl;
   }
+
 }

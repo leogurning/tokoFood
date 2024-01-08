@@ -8,6 +8,7 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
 import { authGuard } from './auth/guards/auth.guard';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
+import { EntryFoodComponent } from './components/pages/entry-food/entry-food.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,7 @@ export const routes: Routes = [
     {   path: 'checkout', component: CheckoutPageComponent, canActivate: [authGuard] },
     {   path: 'payment', component: PaymentPageComponent, canActivate: [authGuard] },
     {   path: 'track/:orderId', component: OrderTrackPageComponent, canActivate: [authGuard] },
+    {   path: 'entry', component: EntryFoodComponent },
     {
         path:"**", redirectTo:"home", pathMatch: "full" 
     },

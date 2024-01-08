@@ -1,0 +1,11 @@
+<input-container [label]="label">
+<select [name]="name" [id]="id" [formControl]="formControl">
+    @for (config of configs; track config) {
+      <option [ngValue]="config.id">{{ config.name }}</option>
+    }
+</select>
+<input-validation
+    [control]="control"
+    [showErrorsWhen]="showErrorsWhen">
+</input-validation>
+</input-container>

@@ -13,4 +13,5 @@ export class Food{
     imageUrl!: string;
     origins!: string[];
     cookTime!:string;
+    status!: number;
   }

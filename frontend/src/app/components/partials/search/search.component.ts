@@ -39,4 +39,8 @@ export class SearchComponent implements OnInit {
     if(term)
     this.router.navigateByUrl('/search/'+ term);
   }
+
+  entryFood(): void {
+    this.router.navigateByUrl('/entry');
+  }
 }

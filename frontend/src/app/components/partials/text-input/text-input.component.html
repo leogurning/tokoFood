@@ -1,5 +1,10 @@
 <input-container [label]="label">
-<input [type]="type" [placeholder]="label" [formControl]="formControl"/>
+@if (directive) {
+    <input FormatNumbers="N2" [type]="type" [placeholder]="label" [formControl]="formControl"/>
+} @else {
+    <input [type]="type" [placeholder]="label" [formControl]="formControl"/>    
+}
+
 <input-validation
     [control]="control"
     [showErrorsWhen]="showErrorsWhen">
